@@ -7,7 +7,7 @@ const { ActivityType, EmbedBuilder } = require('discord.js');
  */
 function setPresence(client, channelId) {
     const messages = [
-        () => 'Romanceplanet'
+        () => `en ${client.guilds.cache.size} servidor${client.guilds.cache.size !== 1 ? 'es' : ''}`,
     ];
 
     // Función para actualizar la presencia
@@ -19,7 +19,7 @@ function setPresence(client, channelId) {
             activities: [
                 {
                     name: activityMessage,
-                    type: ActivityType.Listening // Cambia a Listening, Watching, Competing si quieres
+                    type: ActivityType.Watching // Cambia a Listening, Watching, Competing si quieres
                 }
             ],
             status: 'online'
