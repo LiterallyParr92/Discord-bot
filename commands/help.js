@@ -17,7 +17,7 @@ module.exports = {
         { name: '🔎 | utilidad', value: 'Muestra la lista de los comandos de utilidad' },
         { name: '📀 | música', value: 'Muestra la lista de los comandos de música' },
       )
-      .setThumbnail(interaction.user.displayAvatarURL({ dynamic: true }))
+      .setImage('https://i.pinimg.com/736x/6e/42/b0/6e42b0b441db7ff53d8ac0595f03a223.jpg')
       .setFooter({ text: 'Zeph • desarrollada por ♱ - Parra' });
 
     await interaction.reply({ embeds: [embed] });
