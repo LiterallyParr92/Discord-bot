@@ -1,0 +1,42 @@
+const { REST, Routes } = require('discord.js');
+const fs = require('fs');
+
+// Cargar comandos desde ./commands
+const commands = [];
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    commands.push(command.data.toJSON());
+}
+
+const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
+
+(async () => {
+    try {
+        console.log('🔄 Registrando comandos...');
+
+        // REGISTRAR COMANDOS GLOBALES
+        if (!process.env.GUILD_ID) {
+            await rest.put(
+                Routes.applicationCommands(process.env.CLIENT_ID),
+                { body: commands } // Sobrescribe los comandos globales existentes
+            );
+            console.log('✅ Comandos registrados globalmente (sin duplicados)');
+        }
+
+        // REGISTRAR COMANDOS DE GUILD (servidor de prueba)
+        if (process.env.GUILD_ID) {
+            await rest.put(
+                Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
+                { body: commands } // Sobrescribe los comandos de la guild
+            );
+            console.log('✅ Comandos registrados en servidor de prueba (sin duplicados)');
+        }
+
+    } catch (error) {
+        console.error('❌ Error al registrar comandos:', error);
+    }
+})();
+
+
+
