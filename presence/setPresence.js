@@ -8,8 +8,8 @@ const { ActivityType, EmbedBuilder } = require('discord.js');
 function setPresence(client, channelId) {
     // Mensajes rotativos para la presencia
     const messages = [
-        () => `en **${client.guilds.cache.size}** servidor${client.guilds.cache.size !== 1 ? 'es' : ''}`,
-        () => 'usa /help para ver mis comandos',
+        () => `En ${client.guilds.cache.size} servidor${client.guilds.cache.size !== 1 ? 'es' : ''}`,
+        () => '/help para ver mis comandos',
         () => '¡Disfruta de mi funcionalidad!',
     ];
 
