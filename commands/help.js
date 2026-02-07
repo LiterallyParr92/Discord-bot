@@ -17,7 +17,9 @@ module.exports = {
     await interaction.deferReply(); // 🔥 evita timeout
 
     const commandsPath = path.join(__dirname, '../../commands'); // AJUSTA ESTA RUTA
-    const categories = fs.readdirSync(commandsPath);
+    const categories = fs.readdirSync(commandsPath, { withFileTypes: true })
+  .filter(dirent => dirent.isDirectory())
+  .map(dirent => dirent.name);
 
     let totalCommands = 0;
 
