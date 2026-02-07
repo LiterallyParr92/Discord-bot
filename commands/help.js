@@ -25,7 +25,7 @@ module.exports = {
     const embed = new EmbedBuilder()
       .setTitle("📖 | Menú de ayuda")
       .setColor("#2f3136")
-      .setDescription(`Tengo **${totalCategories} categorías** y **${totalCommands} comandos** disponibles.\nSelecciona una categoria abajo y según la categoria se mostraran comandos relacionados y sus descripciones.`)
+      .setDescription(`Tengo **${totalCategories} categorías** y **${totalCommands} comandos** disponibles.\n\nSelecciona una categoria abajo y según la categoria se mostraran comandos relacionados y sus descripciones.`)
       .setFooter({ text: "Zeph • desarrollada por ♱ - Parra" })
       .setTimestamp();
 
