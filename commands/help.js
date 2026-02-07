@@ -9,10 +9,10 @@ module.exports = {
 
     const embed = new EmbedBuilder()
       .setTitle('📖 | Comandos del bot')
-      .setColor('Blue')
+      .setColor('#5990A8')
       .setDescription('Aquí tienes la lista de comandos disponibles:')
       .addFields(
-        { name: '/ping', value: 'Muestra la latencia del bot' },
+        { name: '📡 | ping', value: 'Muestra la latencia del bot' },
       )
       .setFooter({ text: 'Zeph • desarrollada por ♱ - Parra' });
 
