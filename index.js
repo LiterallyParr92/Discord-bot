@@ -7,18 +7,13 @@ mongoose.connect(process.env.MONGO_URI)
 const { Client, GatewayIntentBits, Collection } = require("discord.js");
 const fs = require("fs");
 const { setPresence } = require("./presence/setPresence");
-const inactivitySystem = require("./inactivitysystem"); // ⚠️ respeta mayúsculas
+const inactivitySystem = require("./inactivitysystem");
 
 // ======================
 // CREAR CLIENTE
 // ======================
 const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMembers, // necesario para kick
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent
-  ]
+  intents: [53608447]
 });
 
 // ======================
@@ -49,8 +44,8 @@ client.once("ready", () => {
 // INTERACCIONES
 // ======================
 
-// En tu index.js o archivo principal
 client.on('interactionCreate', async (interaction) => {
+
   // Manejar menú desplegable de help
   if (interaction.isStringSelectMenu() && interaction.customId === 'help_menu') {
     const helpCommand = require('./commands/help.js'); // Ajusta la ruta
