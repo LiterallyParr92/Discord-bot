@@ -38,9 +38,9 @@ module.exports = {
       .setPlaceholder("Selecciona una categoría")
       .addOptions([
         {
-          label: "🎊 Entretenimiento",
-          description: "Comandos de entretenimiento",
-          value: "fun",
+          label: "ArtTrade",
+          description: "Comandos de ArtTrade",
+          value: "artrade",
         },
         {
           label: "🔩 Moderación",
@@ -53,9 +53,9 @@ module.exports = {
           value: "utils",
         },
         {
-          label: "🎵 Música",
-          description: "Comandos musicales",
-          value: "music",
+          label: "Comisiones",
+          description: "Comandos de comisiones",
+          value: "comisions",
         },
       ]);
 
