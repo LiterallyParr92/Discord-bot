@@ -1,6 +1,8 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = {
+  category: "mod", // o utils, musica, fun...
+  modOnly: true, // opcional
   data: new SlashCommandBuilder()
     .setName("ping")
     .setDescription("Muestra la latencia del bot"),
