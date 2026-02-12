@@ -88,10 +88,10 @@ module.exports.handleMenuInteraction = async (interaction) => {
   
   // Mapear nombres de categorías para mostrar
   const categoryNames = {
-    "artrade": "ArtTrade",
+    "artrade": "🎊 Entretenimiento",
     "mod": "🔩 Moderación", 
     "utils": "🔎 Utilidad",
-    "comisions": "Comisiones"
+    "musica": "🎵 Música"
   };
   
   const categoryColors = {
