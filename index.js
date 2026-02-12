@@ -1,11 +1,9 @@
 require("dotenv").config();
-require("./deploy-commands.js");
-
-const mongoose = require("mongoose");
-const { Client, Collection, GatewayIntentBits, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require("discord.js");
+require("./deploy-commands");
+const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const fs = require("fs");
 const path = require("path");
-const { Collection } = require("discord.js");
+const mongoose = require("mongoose");
 
 // ======================
 // MONGODB
@@ -18,15 +16,11 @@ mongoose.connect(process.env.MONGO_URI)
 // CLIENTE
 // ======================
 const client = new Client({
-  intents: [
-    GatewayIntentBits.Guilds,
-    GatewayIntentBits.GuildMessages,
-    GatewayIntentBits.MessageContent
-  ]
+  intents: [ 53608447 ] // Intents necesarios para comandos, interacciones y gestión de roles
 });
 
 // ================================
-// 🔥 COMMAND LOADER PRO
+// 🔥 LOADER  
 // ================================
 
 client.commands = new Collection();
@@ -75,29 +69,6 @@ for (const folder of commandFolders) {
 client.categories = [...client.categories];
 console.log(`📂 Categorías: ${client.categories.join(", ")}`);
 console.log(`🤖 Total comandos: ${client.commands.size}`);
-
-// ======================
-// COMANDOS
-// ======================
-client.commands = new Collection();
-client.categories = [];
-
-// Cargar carpetas de comandos
-const commandFolders = fs.readdirSync("./commands").filter(f =>
-  fs.statSync(`./commands/${f}`).isDirectory()
-);
-
-for (const folder of commandFolders) {
-  const files = fs.readdirSync(`./commands/${folder}`).filter(f => f.endsWith(".js"));
-
-  for (const file of files) {
-    const command = require(`./commands/${folder}/${file}`);
-    client.commands.set(command.data.name, command);
-  }
-}
-
-// Autodetectar categorías
-client.categories = [...new Set(client.commands.map(cmd => cmd.category))];
 
 // ======================
 // READY
